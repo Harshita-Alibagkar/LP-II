@@ -1,0 +1,18 @@
+/* Custom styles */
+body {
+     /* Adjust based on navbar height */
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 10px;
+  }
+  
+  .navbar-nav .nav-link {
+    color: white !important;
+  }
+  
