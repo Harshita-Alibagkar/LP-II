@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registration  Form</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2 style="text-align: center;">Register</h2>
+        <form id="registration">
+            <label for="id">*ID:</label>
+            <input type="text" id="id" name="id" required>
+
+            <label for="name">*Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="username">*Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">*Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="email">*Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="dob">*DOB:</label>
+            <input type="date" id="dob" name="dob" min="2004-01-01" required>
+
+            <label>Gender:</label>
+            <div class="gender-options">
+                <input type="radio" id="male" name="gender" value="male">
+                <span>Male</span>
+
+                <input type="radio" id="female" name="gender" value="female">
+                <span>Female</span>
+
+                <input type="radio" id="other" name="gender" value="other">
+                <span>Other</span>
+            </div>
+            <label>Address:</label>
+            <input type="text" name="address" id="address" style="resize: both;">
+
+            <label for="city">City:</label>
+                <select id="city" name="city">
+                    <option value="Pune">Pune</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Nashik">Nashik</option>
+                    
+                </select>
+                <label for="pin">Pincode:</label>
+                <input type="pin" id="pin" name="pin" required pattern="[0-9]{6}" required>
+                <label for="city">State:</label>
+                <select id="state" name="state">
+                    <option value="Maharshtra">Maharshtra</option>
+                    <option value="Gujrat">Gujrat</option>
+                    <option value="Kerala">Kerala</option>
+                    
+                </select>
+                <label>Hobbies:</label>
+                <div class="hobbies">
+                    <input type="checkbox" id="travelling" name="travelling" value="travelling">
+                    <span>Travelling</span>
+    
+                    <input type="checkbox" id="singing" name="singing" value="singing">
+                    <span>singing</span>
+    
+                    <input type="checkbox" id="painting" name="painting" value="painting">
+                    <span>painting</span>
+                </div>
+            <button type="button" onClick="registration()" >Submit</button>
+            
+
+        </form>
+        <p id="loginStatus"></p>
+    </div>
+
+    <script>
+        function registration()
+	{
+
+		var name= document.getElementById("name").value;
+		var email= document.getElementById("email").value;
+		var uname= document.getElementById("username").value;
+		var pwd= document.getElementById("password").value;			
+		var id= document.getElementById("id").value;
+		
+        //email id expression code
+		var pwd_expression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+		var letters = /^[A-Za-z]+$/;
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+		if(name=='')
+		{
+			alert('Please enter your name');
+		}
+		else if(!letters.test(name))
+		{
+			alert('Name field required only alphabet characters');
+		}
+		else if(email=='')
+		{
+			alert('Please enter your user email id');
+		}
+		else if (!filter.test(email))
+		{
+			alert('Invalid email');
+		}
+		else if(uname=='')
+		{
+			alert('Please enter the user name.');
+		}
+		else if(!letters.test(uname))
+		{
+			alert('User name field required only alphabet characters');
+		}
+		else if(pwd=='')
+		{
+			alert('Please enter Password');
+		}
+		
+		else if(!pwd_expression.test(pwd))
+		{
+			alert ('Upper case, Lower case, Special character and Numeric letter are required in Password filed');
+		}
+		
+		else if(document.getElementById("password").value.length < 8)
+		{
+			alert ('Password minimum length should be 8');
+		}
+		
+		else
+		{				                            
+               alert('Thank You for Registration ');
+			   
+		}
+	}
+	function clearFunc()
+	{
+		document.getElementById("name").value="";
+		document.getElementById("email").value="";
+		document.getElementById("password").value="";
+		document.getElementById("username").value="";
+		document.getElementById("id").value="";
+	}
+    
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

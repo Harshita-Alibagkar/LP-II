@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #d6cbcb;
+            text-align: center; /* Center all text */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Reset text alignment for container contents */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .user-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: left; /* Reset text alignment for user items */
+        }
+
+        .user-item label {
+            font-weight: bold;
+        }
+
+        .user-item div {
+            margin-top: 5px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .user-item div:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 >User List</h1>
+    <div class="container">
+       
+        <ol id="userList"></ol>
+    </div>
+
+    <script>
+        // Retrieve user data from local storage
+        var ids = JSON.parse(localStorage.getItem('ids')) || [];
+        var names = JSON.parse(localStorage.getItem('names')) || [];
+        var usernames = JSON.parse(localStorage.getItem('usernames')) || [];
+        var emails = JSON.parse(localStorage.getItem('emails')) || [];
+        var dobs = JSON.parse(localStorage.getItem('dobs')) || [];
+        var genders = JSON.parse(localStorage.getItem('genders')) || [];
+        var addresses = JSON.parse(localStorage.getItem('addresses')) || [];
+        var cities = JSON.parse(localStorage.getItem('cities')) || [];
+        var pincodes = JSON.parse(localStorage.getItem('pincodes')) || [];
+        var states = JSON.parse(localStorage.getItem('states')) || [];
+        var hobbiesList = JSON.parse(localStorage.getItem('hobbiesList')) || [];
+
+        var userList = document.getElementById('userList');
+        // Clear existing list
+        userList.innerHTML = '';
+
+        for (var i = 0; i < ids.length; i++) {
+            var li = document.createElement('li');
+            li.classList.add('user-item');
+            li.innerHTML = `
+                <label>ID:</label> ${ids[i]}<br><br>
+                <label>Name:</label> ${names[i]}<br><br>
+                <label>Username:</label> ${usernames[i]}<br><br>
+                <label>Email:</label> ${emails[i]}<br><br>
+                <label>DOB:</label> ${dobs[i]}<br><br>
+                <label>Gender:</label> ${genders[i]}<br><br>
+                <label>Address:</label> ${addresses[i]}<br><br>
+                <label>City:</label> ${cities[i]}<br><br>
+                <label>Pincode:</label> ${pincodes[i]}<br><br>
+                <label>State:</label> ${states[i]}<br><br>
+                <label>Hobbies:</label> ${hobbiesList[i].join(', ')}<br><br>
+            `;
+            userList.appendChild(li);
+        }
+    </script>
+</body>
+</html>
