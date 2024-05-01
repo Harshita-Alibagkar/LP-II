@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+<body>
+    <form id="userForm">
+    <div style="display: flex;justify-content: center;">
+    <div class="login-container">
+        <div class="form-title">
+            <h2 class="title">User Form</h2>
+        </div>
+        <div class="row1">
+            <div id = "r1c1">
+                <p>Enter Name</p>
+            </div>
+            <div id="r1c2"> 
+                <input type="text" id="name" required/>
+            </div>
+        </div>
+        <div class="row1">
+            <div id = "r1c1">
+                <p>Enter Password</p>
+            </div>
+            <div id="r1c2"> 
+                <input type="password" id="password" required/>
+            </div>
+        </div>
+        <div class="row3">
+            <div id = "r3c1">
+                <p>Enter Address <Address></Address></p>
+            </div>
+            <div id="r3c2"> 
+                <input type="text" id="address" required/>
+            </div>
+        </div>
+        <div class="row4">
+            <div id = "r3c1">
+                <p>Select Game <Address></Address></p>
+            </div>
+            <div id="r4c2"> 
+                <div><input type="checkbox" id="a" name="Hockey" value="Hockey"/>
+                    <span for ="Hockey" >Hockey</span></div>
+                <div>
+                    <input type="checkbox" id="checkbox" name="Hockey" value="Hockey"/>
+                <label for ="Footbal" >Football</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="checkbox" name="Hockey" value="Hockey"/>
+                <label for ="Badminton" >Badminton</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="checkbox" name="Hockey" value="Hockey"/>
+                <label for ="Cricket" >Cricket</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="checkbox" name="Volleyball" value="Volleyball"/>
+                <label for ="Volleyball" >Volleyball</label>
+                </div>
+                
+               
+                
+            </div>
+        </div>
+        <div class="row5">
+            <div id = "r5c1">
+                <p>Gender</p>
+            </div>
+            <div id="r5c2"> 
+                <input type="radio" id="male" />
+                <label for="male">Male</label><br />
+                <input type="radio" id="female"/>
+                <label for="female">Female</label><br />
+            </div>
+        </div>
+        <div class="row6">
+            <div id = "r6c1">
+                Select ur age
+            </div>
+            <div id="r6c2"> 
+                
+                <select id="dropdown">
+                    <option value="" selected disabled>Select</option>
+                    <option value="option1">Below 10</option>
+                    <option value="option2">10-20yrs</option>
+                    <option value="option3">20+ yrs</option>
+                    <!-- Add more options as needed -->
+                  </select>
+                  
+                
+            </div>
+        </div>
+        <div class="row7">
+            
+            <input type="file" id="file" name="file">
+        </div>
+        <div class="row8">
+            <button type="button" onclick="alert('Clicked!')">Click Me</button>
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+
+        </div>
+
+
+    </div>
+</div>
+</form>
+<script>
+    // Form submission
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        alert('Form submitted!'); // Alert on form submission (can be replaced with actual form submission logic)
+    });
+</script>
+</body>
+</html>
