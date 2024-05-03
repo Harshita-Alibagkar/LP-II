@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\harsh\Desktop\WAD-PRAC\css\bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="C:\Users\harsh\Desktop\WAD-PRAC\js\bootstrap.min.js"></script>
+    
+    <title>User Records</title>
+</head>
+<body>
+    <table class="record-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Pincode</th>
+            </tr>
+        </thead>
+        <tbody id="myTable"></tbody>
+    </table>
+
+    <script>
+        var initialData = JSON.parse(localStorage.getItem('users')) || [];
+        buildTable(initialData);
+
+        function buildTable(data) {
+            var table = document.getElementById("myTable");
+            table.innerHTML = ''; // Clear existing table data
+
+            for (var i = 0; i < data.length; i++) {
+                var row = `<tr>
+                                <td>${data[i].name}</td>
+                                <td>${data[i].username}</td>
+                                <td>${data[i].password}</td>
+                                <td>${data[i].dob}</td>
+                                <td>${data[i].gender}</td>
+                                <td>${data[i].pin}</td>
+                            </tr>`;
+                table.innerHTML += row;
+            }
+        }
+    </script>
+</body>
+</html>

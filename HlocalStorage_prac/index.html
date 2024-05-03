@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Local Storage</title>
+    <link rel="stylesheet" href="file:///C:/Users/harsh/Desktop/WAD-PRAC/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="file:///C:/Users/harsh/Desktop/WAD-PRAC/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container" style="width: 80%;
+    max-width: 800px;
+    background-color: rgba(254, 245, 252, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    overflow: hidden;">
+        <div class="registration-form" style="flex: 1;
+        padding: 40px;">
+            <h1>User Registration</h1>
+            <form id="reg">
+                <label for="name">*Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="username">*Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">*Password</label>
+                <input type="text" id="password" name="password" required>
+
+                <label for="dob">*DOB</label>
+                <input type="date" id="dob" name="dob" min="2003-01-01" max="2024-05-03" required>
+
+                <label>*Gender</label>
+                <div class="gender-options">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <span>Male</span>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <span>Female</span>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <span>Others</span>
+                </div>
+
+                <!-- <label for="city">*City</label>
+                <input list="cities" name="cities">
+                <select id="cities">
+                    <option value="Pune">Pune</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Jodhpur">Jodhpur</option>
+                </select> -->
+
+                <label for="pin">*Pincode</label>
+                <input type="text" id="pin" name="pin" required pattern="[0-9]{6}" required>
+
+                <div class="text-center">
+                    <button type="button" onclick="saveData()" class="btn btn-primary">Submit</button>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" onclick="navigateToRecords()" class="btn btn-secondary">View User
+                        Records</button>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="clearLocalStorage()" class="btn btn-danger" style="justify-content: center;">Clear Local Storage</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <script>
+        function navigateToRecords() {
+            window.location.href = "recordTable.html";
+        }
+
+        function saveData() {
+            var name = document.getElementById("name").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var dob = document.getElementById("dob").value;
+            // var city = document.getElementById("cities").value;
+
+            var genderElements = document.getElementsByName("gender");
+            var gender;
+            for (var i = 0; i < genderElements.length; i++) {
+                if (genderElements[i].checked) {
+                    gender = genderElements[i].value;
+                    break;
+                }
+            }
+
+            var pin = document.getElementById("pin").value;
+
+            if (name === '') {
+                alert("Please enter your name");
+                return;
+            }
+
+            if (username === '') {
+                alert("Please enter your username");
+                return;
+            }
+
+            if (password === '') {
+                alert("Please enter your password");
+                return;
+            } else if (password.length < 8) {
+                alert("Minimum length of password should be 8");
+                return;
+            }
+
+            var user_records = JSON.parse(localStorage.getItem("users")) || [];
+            user_records.push({
+                "name": name,
+                "username": username,
+                "password": password,
+                "dob": dob,
+                "gender": gender,
+                // "city": city,
+                "pin": pin
+            });
+            localStorage.setItem("users", JSON.stringify(user_records));
+
+            alert("User data saved successfully");
+            document.getElementById("reg").reset(); // Reset form after successful submission
+        }
+        function clearLocalStorage() {
+            localStorage.clear();
+            alert("Local storage data cleared successfully!");
+        }
+    </script>
+</body>
+
+</html>
